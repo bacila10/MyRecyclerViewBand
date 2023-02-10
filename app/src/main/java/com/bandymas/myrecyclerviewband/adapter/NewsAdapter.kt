@@ -3,28 +3,29 @@ package com.bandymas.myrecyclerviewband.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bandymas.myrecyclerviewband.Model.DummyData
 import com.bandymas.myrecyclerviewband.R
+import com.bandymas.myrecyclerviewband.databinding.ItemsDummyDataBinding
 
 class NewsAdapter(private val dummyList: List<DummyData>): RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
-
+    private lateinit var binding: ItemsDummyDataBinding
 
     class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+            var itemTextView = itemView.txtDummy.text
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
-       val view = LayoutInflater.from(parent.context).inflate(R.layout.items_dummy_data, parent, false)
-        return NewsHolder(view)
+       val binding = LayoutInflater.from(parent.context).inflate(R.layout.items_dummy_data, parent, false)
+        return NewsHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = dummyList[position]
+        holder.
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = dummyList.size
 }
